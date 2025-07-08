@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - IKART</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inria+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Ikart.css" />
+</head>
+<body>
+  <style>
+    html, body {
+  font-family: 'Inria Serif', serif;
+  background-color: #fcf6f6;
+  color: #0a1a40; /* Changed from #e0e0e0 to readable dark color */
+  overflow-x: hidden;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+a {
+  color: #ffcc00;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover, a:focus {
+  color: #e6b800;
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  font-family: 'Inria Serif', serif;
+}
+
+/* === Navbar === */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #081943; /* Updated Navy Blue */
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(10, 9, 9, 0.2); /* Optional: shadow for visibility */
+}
+
+.navbar .logo img {
+  height: 50px;
+}
+
+.navbar nav ul {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.navbar nav ul li a,
+.navbar nav ul li select {
+  color: #e0e0e0;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar nav ul li a.active,
+.navbar nav ul li a:hover,
+.navbar nav ul li select:hover,
+.navbar nav ul li select:focus {
+  background-color: hwb(60 97% 3%);
+  color: #0a1a40;
+  outline: none;
+}
+
+.dropdown-nav select {
+  font-family: 'Inria Serif', serif;
+}
+
+/* === Footer === */
+.site-footer, .footer {
+  background-color: #07173d; /* Match navbar navy blue */
+  color: #e0e0e0;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 8px rgba(7, 7, 7, 0.2); /* Optional: top shadow for separation */
+}
+
+.site-footer .footer-content,
+.footer-content {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.site-footer .social-icons a {
+  margin: 0 8px;
+  color: #ffcc00;
+  font-size: 1.5rem;
+}
+
+.site-footer .social-icons a:hover,
+.site-footer .social-icons a:focus {
+  color: #e6b800;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* === About Page Styles === */
+
+.about-container {
+  display: flex;
+  gap: 40px;
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 0 20px;
+  color: #e0e0e0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.about-text {
+  flex: 1 1 450px;
+  min-width: 280px;
+}
+
+.about-text h2,
+.about-text h3 {
+  color: #060605;
+  margin-bottom: 15px;
+}
+
+.about-text p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+  color: #0d0d0d;
+}
+
+.about-text ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  color: #111111;
+}
+
+.about-text ul li {
+  margin-bottom: 10px;
+}
+
+.about-image {
+  flex: 1 1 400px;
+  min-width: 280px;
+  text-align: center;
+}
+
+.about-image img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+}
+
+/* Team Section */
+.team-section {
+  max-width: 960px;
+  margin: 40px auto 60px;
+  padding: 0 20px;
+  color: #0f0f0f;
+  text-align: center;
+}
+
+.team-section h2 {
+  color: #080808;
+  margin-bottom: 30px;
+}
+
+.team-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.team-member {
+  background-color: #f9f8f8;
+  padding: 20px;
+  border-radius: 12px;
+  width: 180px;
+  box-shadow: 0 4px 12px rgba(8, 8, 8, 0.6);
+  color: #090909;
+}
+
+.team-member img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+
+/* Unique Features Section */
+.unique-section {
+  max-width: 960px;
+  margin: 40px auto 60px;
+  padding: 0 20px;
+  color: #0b0a0a;
+  text-align: center;
+}
+
+.unique-section h2 {
+  color: #060605;
+  margin-bottom: 30px;
+}
+
+.unique-features {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.feature-box {
+  background-color: #021930;
+  padding: 20px;
+  border-radius: 12px;
+  width: 250px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  color: #e0e0e0;
+}
+
+.feature-box img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 15px;
+}
+
+.feature-box h4 {
+  margin-bottom: 10px;
+  color: #ecece9;
+}
+
+.feature-box p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+/* Contact Form */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+  color: #050505;
+  text-align: center;
+}
+
+.contact-form h2 {
+  color: #101010;
+  margin-bottom: 20px;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1.5px solid #e3e6ed;
+  font-family: 'Inria Serif', serif;
+  font-size: 1rem;
+  resize: vertical;
+  background-color: #f8f2f2;
+  color: #e0e0e0;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+  border-color: #ffcc00;
+  outline: none;
+}
+
+.contact-form button {
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  font-weight: 700;
+  color: #021930;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover,
+.contact-form button:focus {
+  background-color: #e6b800;
+  outline: none;
+}
+  </style>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <a href="Index.html">
+        <img src="IMAGES/IKART.png" alt="IKART Logo">
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="Index.html">Home</a></li>
+        <li><a href="About.html" class="active">About</a></li>
+        <li><a href="Product.html">Product</a></li>
+        <li><a href="CART.PHP">🛒</a></li>
+        <li class="dropdown-nav">
+          <select onchange="location = this.value;">
+            <option value="#">Pharma/Prescription</option>
+            <option value="drug-database.html">Drug Database</option>
+            <option value="directions.html">Directions for Use</option>
+            <option value="disease.html">Disease</option>
+            <option value="forms.html">Forms</option>
+            <option value="health.html">Health</option>
+            <option value="lab-tests.html">Laboratory Tests</option>
+            <option value="natural-products.html">Natural Health Products</option>
+            <option value="nutrition.html">Nutrition</option>
+            <option value="recreational-drugs.html">Recreational Drugs</option>
+            <option value="travel-destination.html">Travel Destination</option>
+            <option value="travel-info.html">Travel Information</option>
+          </select>
+        </li>
+        <li><a href="register.html">Sign Up</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- About Section -->
+  <section class="about-container">
+    <div class="about-text">
+      <h2>About IKART</h2>
+      <p>
+        IKART is an instant online medical cart solution offering fast and secure delivery of essential medicines across your city. Our mission is to simplify access to healthcare products by providing a streamlined, digital-first shopping experience.
+      </p>
+
+      <h3>Our Vision</h3>
+      <p>
+        To become the most trusted and accessible digital platform for medical needs, providing quality assurance, real-time availability, and reliable customer service. Our main motive is to provide fastest delivery in 15 minutes.
+      </p>
+
+      <h3>Why Choose Us?</h3>
+      <ul>
+        <li><strong>Speedy Delivery:</strong> Get your orders delivered within hours, not days.</li>
+        <li><strong>Fresh & Quality Products:</strong> We partner with trusted suppliers to ensure you get only the best.</li>
+        <li><strong>Easy Shopping Experience:</strong> A clean, user-friendly interface so you can shop in just a few clicks.</li>
+        <li><strong>Affordable Prices:</strong> We believe convenience should come with value.</li>
+        <li><strong>Customer First:</strong> Our support team is here to help every step of the way.</li>
+      </ul>
+    </div>
+
+    <div class="about-image">
+      <img src="IMAGES/alexander-grey-FEPfs43yiPE-unsplash.jpg" alt="Medicines" />
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="team-section">
+    <h2>Meet the Team</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <img src="IMAGES/Graduation Photo.jpg" alt="Bhavana Singh">
+        <h4>Bhavana Singh</h4>
+        <p>Project Lead</p>
+      </div>
+      <div class="team-member">
+        <img src="https://via.placeholder.com/120" alt="Rilwan">
+        <h4>Rilwan</h4>
+        <p>UI/UX Designer</p>
+      </div>
+      <div class="team-member">
+        <img src="https://via.placeholder.com/120" alt="Arpan">
+        <h4>Arpan</h4>
+        <p>Database & Backend Lead</p>
+      </div>
+      <div class="team-member">
+        <img src="https://via.placeholder.com/120" alt="Sylvie">
+        <h4>Sylvie</h4>
+        <p>Testing & Deployment</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Makes Us Different -->
+  <section class="unique-section">
+    <h2>What Makes Us Different</h2>
+    <div class="unique-features">
+      <div class="feature-box">
+        <img src="https://cdn-icons-png.flaticon.com/128/7971/7971571.png" alt="24/7 Delivery">
+        <h4>24/7 Delivery</h4>
+        <p>Medicines delivered any time of the day or night, right when you need them.</p>
+      </div>
+      <div class="feature-box">
+        <img src="https://cdn-icons-png.flaticon.com/128/10530/10530391.png" alt="Cold Chain">
+        <h4>Cold Chain Transport</h4>
+        <p>Temperature-sensitive products delivered with complete cold chain safety.</p>
+      </div>
+      <div class="feature-box">
+        <img src="https://cdn-icons-png.flaticon.com/128/949/949637.png" alt="Discounts">
+        <h4>Discounts</h4>
+        <p>Special offers for senior citizens and loyal customers to make healthcare more affordable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="contact-form">
+    <h2>Contact Us</h2>
+    <form action="contact_submit.php" method="POST">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Email Address" required />
+      <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 InstantKart. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+

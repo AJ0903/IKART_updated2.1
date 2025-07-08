@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>IKART - Product Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inria+Serif&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="Ikart.css" />
+  <style>
+    /* Additional styling for buttons */
+    .add-to-cart-btn {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      margin-top: 8px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .add-to-cart-btn:hover {
+      background: #1e7e34;
+    }
+    #cart-count {
+      color: white;
+      font-weight: bold;
+      margin: 20px;
+      font-size: 18px;
+    }
+
+
+    html, body {
+  font-family: 'Inria Serif', serif;
+  background-color: #fcf6f6;
+  color: #0a1a40; /* Changed from #e0e0e0 to readable dark color */
+  overflow-x: hidden;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+a {
+  color: #ffcc00;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover, a:focus {
+  color: #e6b800;
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  font-family: 'Inria Serif', serif;
+}
+
+/* === Navbar === */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #081943; /* Updated Navy Blue */
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(10, 9, 9, 0.2); /* Optional: shadow for visibility */
+}
+
+.navbar .logo img {
+  height: 50px;
+}
+
+.navbar nav ul {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.navbar nav ul li a,
+.navbar nav ul li select {
+  color: #e0e0e0;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar nav ul li a.active,
+.navbar nav ul li a:hover,
+.navbar nav ul li select:hover,
+.navbar nav ul li select:focus {
+  background-color: hwb(60 97% 3%);
+  color: #0a1a40;
+  outline: none;
+}
+
+.dropdown-nav select {
+  font-family: 'Inria Serif', serif;
+}
+
+/* === Footer === */
+.site-footer, .footer {
+  background-color: #07173d; /* Match navbar navy blue */
+  color: #e0e0e0;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 8px rgba(7, 7, 7, 0.2); /* Optional: top shadow for separation */
+}
+
+.site-footer .footer-content,
+.footer-content {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.site-footer .social-icons a {
+  margin: 0 8px;
+  color: #ffcc00;
+  font-size: 1.5rem;
+}
+
+.site-footer .social-icons a:hover,
+.site-footer .social-icons a:focus {
+  color: #e6b800;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* === Product Page Styles === */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 960px;
+  margin: 40px auto;
+}
+
+.product-card {
+  background-color: #ffffff; /* white background */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  padding: 15px;
+  text-align: center;
+  color: #000000; /* black text */
+}
+
+.product-card h2,
+.product-card h3,
+.product-card h4,
+.product-card p {
+  color: #000000; /* ensure all text types are black */
+  margin: 0.5em 0;
+}
+.product-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.product-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.product-card p {
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.product-card button {
+  margin: 5px 5px 0 5px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: 'Inria Serif', serif;
+  transition: background-color 0.3s ease;
+}
+
+.add-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.add-btn:hover,
+.add-btn:focus {
+  background-color: #218838;
+}
+
+.sub-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.sub-btn:hover,
+.sub-btn:focus {
+  background-color: #c82333;
+}
+
+.buy-later-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.buy-later-btn:hover,
+.buy-later-btn:focus {
+  background-color: #0056b3;
+}
+
+/* Search Section */
+.search-container {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ccc;
+}
+
+.search-container input,
+.search-container select {
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 200px;
+  transition: border-color 0.3s ease;
+}
+
+.search-container input:focus,
+.search-container select:focus {
+  outline: none;
+  border-color: #007bff; /* subtle blue border on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">
+    <a href="Index.html">
+      <img src="IMAGES/IKART.png" alt="IKART Logo" />
+    </a>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="Index.html">Home</a></li>
+      <li><a href="About.html">About</a></li>
+      <li><a href="Product.html" class="active">Product</a></li>
+      <li><a href="Buylater.html">Buy Later 🕒</a></li>
+      <li><a href="CART.PHP">🛒</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Cart count display -->
+<div id="cart-count">Cart Items: 0</div>
+
+<!-- Search Section -->
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Search products by name..." />
+  <select id="ageFilter">
+    <option value="all">All Ages</option>
+    <option value="children">Children</option>
+    <option value="adult">Adult</option>
+    <option value="elderly">Elderly</option>
+  </select>
+</div>
+
+<main class="product-grid" id="productGrid"></main>
+
+<script>
+    const products = [
+      { name: "1st Response", price: 20.00, image: "IMAGES/1.jpg", age: "Adult" },
+      { name: "NeoCitran", price: 13.50, image: "IMAGES/2.jpg", age: "Adult" },
+      { name: "Reactine 10mg", price: 40.00, image: "IMAGES/3.jpg", age: "Adult" },
+      { name: "White Bandage", price: 3.90, image: "IMAGES/4.png", age: "All" },
+      { name: "Brown Bandage", price: 5.80, image: "IMAGES/5.jpg", age: "All" },
+      { name: "Pregnancy Test", price: 9.85, image: "IMAGES/6.jpg", age: "Adult" },
+      { name: "Probiotic 20mg", price: 22.89, image: "IMAGES/7.jpg", age: "Elderly" },
+      { name: "Benadryl", price: 12.78, image: "IMAGES/8.jpg", age: "Children" }
+    ];
+
+const productGrid = document.getElementById("productGrid");
+const searchInput = document.getElementById("searchInput");
+const ageFilter = document.getElementById("ageFilter");
+const cartCountDisplay = document.getElementById("cart-count");
+
+function renderProducts() {
+  const searchTerm = searchInput.value.toLowerCase();
+  const ageValue = ageFilter.value;
+
+  productGrid.innerHTML = "";
+
+  const filtered = products.filter(product => {
+    const matchesName = product.name.toLowerCase().includes(searchTerm);
+    const matchesAge = ageValue === "all" || product.age === ageValue || product.age === "all";
+    return matchesName && matchesAge;
+  });
+
+  if (filtered.length === 0) {
+    productGrid.innerHTML = "<p>No products found.</p>";
+    return;
+  }
+
+  filtered.forEach(product => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}" />
+      <h3>${product.name}</h3>
+      <p>Price: $${product.price.toFixed(2)}</p>
+
+      <div class="quantity-controls">
+        <button class="sub-btn" onclick="decreaseQty(this)">−</button>
+        <input type="text" value="1" readonly class="qty-input" />
+        <button class="add-btn" onclick="increaseQty(this)">+</button>
+      </div>
+
+      <button class="buy-later-btn" onclick="buyLater('${product.name}')">🕒 Buy Later</button>
+      <button class="add-to-cart-btn" onclick="addToCart('${product.name}', ${product.price}, this)">Add to Cart</button>
+    `;
+    productGrid.appendChild(card);
+  });
+}
+
+function buyLater(name) {
+  const product = products.find(p => p.name === name);
+  let buyLaterList = JSON.parse(localStorage.getItem('buyLaterList')) || [];
+
+  if (!buyLaterList.some(item => item.name === name)) {
+    buyLaterList.push(product);
+    localStorage.setItem('buyLaterList', JSON.stringify(buyLaterList));
+    alert(`${name} added to Buy Later.`);
+  } else {
+    alert(`${name} is already in Buy Later.`);
+  }
+
+  window.location.href = "buy-later.html";
+}
+
+function increaseQty(button) {
+  const input = button.parentElement.querySelector(".qty-input");
+  let qty = parseInt(input.value);
+  input.value = qty + 1;
+}
+
+function decreaseQty(button) {
+  const input = button.parentElement.querySelector(".qty-input");
+  let qty = parseInt(input.value);
+  if (qty > 1) {
+    input.value = qty - 1;
+  }
+}
+
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  let count = 0;
+  Object.values(cart).forEach(item => {
+    count += item.quantity;
+  });
+  cartCountDisplay.textContent = `Cart Items: ${count}`;
+}
+
+function addToCart(name, price, button) {
+  const qtyInput = button.parentElement.querySelector('.qty-input');
+  const quantity = parseInt(qtyInput.value);
+  if (!quantity || quantity < 1) {
+    alert('Please enter a valid quantity.');
+    return;
+  }
+
+  let cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+  if (cart[name]) {
+    cart[name].quantity += quantity;
+  } else {
+    cart[name] = { name, price, quantity };
+  }
+
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartCount();
+  alert(`${quantity} x ${name} added to cart.`);
+}
+
+searchInput.addEventListener("input", renderProducts);
+ageFilter.addEventListener("change", renderProducts);
+
+renderProducts();
+updateCartCount();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IKART - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inria+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Ikart.css" />
+
+</head>
+<body>
+  <style>
+    html, body {
+  font-family: 'Inria Serif', serif;
+  background-color: #fcf6f6;
+  color: #0a1a40; /* Changed from #e0e0e0 to readable dark color */
+  overflow-x: hidden;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+a {
+  color: #ffcc00;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover, a:focus {
+  color: #e6b800;
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  font-family: 'Inria Serif', serif;
+}
+
+/* === Navbar === */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #081943; /* Updated Navy Blue */
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(10, 9, 9, 0.2); /* Optional: shadow for visibility */
+}
+
+.navbar .logo img {
+  height: 50px;
+}
+
+.navbar nav ul {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.navbar nav ul li a,
+.navbar nav ul li select {
+  color: #e0e0e0;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar nav ul li a.active,
+.navbar nav ul li a:hover,
+.navbar nav ul li select:hover,
+.navbar nav ul li select:focus {
+  background-color: hwb(60 97% 3%);
+  color: #0a1a40;
+  outline: none;
+}
+
+.dropdown-nav select {
+  font-family: 'Inria Serif', serif;
+}
+
+/* === Footer === */
+.site-footer, .footer {
+  background-color: #07173d; /* Match navbar navy blue */
+  color: #e0e0e0;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 8px rgba(7, 7, 7, 0.2); /* Optional: top shadow for separation */
+}
+
+.site-footer .footer-content,
+.footer-content {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.site-footer .social-icons a {
+  margin: 0 8px;
+  color: #ffcc00;
+  font-size: 1.5rem;
+}
+
+.site-footer .social-icons a:hover,
+.site-footer .social-icons a:focus {
+  color: #e6b800;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* General Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+/* === Banner Section === */
+.background-hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: url('IMAGES/istockphoto-1627752731-612x612.jpg') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.background-hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Dark overlay */
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  padding: 20px;
+  max-width: 800px;
+}
+
+.hero-content h1,
+.hero-content h2,
+.hero-content p,
+.hero-content .offer {
+  color: white;
+  font-weight: bold;
+}
+
+.hero-content .offer {
+  font-size: 1.3rem;
+  color: #f90c0c;
+  margin-bottom: 20px;
+}
+
+.hero-content h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.hero-content h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+/* Fast Delivery Banner inside hero */
+.fast-delivery-banner {
+  margin: 30px 0;
+}
+
+.fast-delivery-banner .delivery-icon img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.fast-delivery-banner .delivery-text h2,
+.fast-delivery-banner .delivery-text p {
+  margin: 10px 0;
+  color: white;
+  font-weight: 600;
+}
+
+/* CTA Button */
+.btn {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 30px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+
+
+/* Testimonials */
+.testimonials {
+  background-color: #fff;
+  color: #0a1a40;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.testimonials h3 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.testimonial-list {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.testimonial {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  color: #121212;
+}
+
+.testimonial img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.testimonial p {
+  margin: 15px 0;
+  font-style: italic;
+}
+
+.testimonial span {
+  font-weight: bold;
+}
+
+/* Newsletter Section */
+.newsletter-section {
+  background-color: #0a1a40;
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.newsletter-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.newsletter-section p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+/* Center form container */
+.newsletter-section .newsletter-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.newsletter-section .newsletter-form input[type="email"] {
+  padding: 10px;
+  width: 250px;
+  max-width: 90%;
+  border-radius: 5px;
+  border: none;
+}
+
+.newsletter-section .newsletter-form button {
+  padding: 10px 20px;
+  background-color: #ffcc00;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #021930;
+  transition: background-color 0.3s ease;
+}
+
+.newsletter-section .newsletter-form button:hover,
+.newsletter-section .newsletter-form button:focus {
+  background-color: #e6b800;
+  outline: none;
+}
+
+
+/* App Promo */
+.app-promo {
+  background-color: #021930;
+  color: #e0e0e0;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.app-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.app-content p {
+  margin-bottom: 20px;
+}
+
+.app-buttons a img {
+  height: 50px;
+  margin: 0 10px;
+  vertical-align: middle;
+}
+
+.chat-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+  font-family: Arial, sans-serif;
+  z-index: 1000;
+}
+
+.chat-header {
+  background-color: #0a1a40;
+  color: white;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+}
+
+.chat-body {
+  display: none;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  max-height: 350px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.chat-messages {
+  padding: 10px;
+  height: 200px;
+  overflow-y: auto;
+  border-bottom: 1px solid #eee;
+}
+
+.chat-input-area {
+  display: flex;
+  padding: 10px;
+  gap: 5px;
+}
+
+.chat-input-area input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.chat-input-area button {
+  padding: 8px 12px;
+  background-color: #0a1a40;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+  </style>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="logo">
+      <a href="Index.html">
+        <img src="IMAGES/IKART.png" alt="IKART Logo">
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="Index.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="Product.html">Product</a></li>
+        <li><a href="cart.php">🛒</a></li>
+        <li class="dropdown-nav">
+          <select onchange="location = this.value;">
+            <option value="#">Pharma/Prescription</option>
+            <option value="drug-database.html">Drug Database</option>
+            <option value="directions.html">Directions for Use</option>
+            <option value="disease.html">Disease</option>
+            <option value="forms.html">Forms</option>
+            <option value="health.html">Health</option>
+            <option value="lab-tests.html">Laboratory Tests</option>
+            <option value="natural-products.html">Natural Health Products</option>
+            <option value="nutrition.html">Nutrition</option>
+            <option value="recreational-drugs.html">Recreational Drugs</option>
+            <option value="travel-destination.html">Travel Destination</option>
+            <option value="travel-info.html">Travel Information</option>
+          </select>
+        </li>
+        <li><a href="register.html">Sign Up</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="background-hero">
+  <div class="hero-content">
+    <p class="offer">SPECIAL OFFERS! SIGN UP FOR EMAIL</p>
+    <h1>Get Medicines Instantly</h1>
+    <h2>Fast. Reliable. Delivered to your doorstep In 15 Minutes.</h2>
+    <section class="fast-delivery-banner">
+      <div class="delivery-text">
+        <h2>“Your Health, Delivered Swiftly.”</h2>
+        <p>Experience lightning-fast delivery of essential medicines right to your doorstep — safe, reliable, and just when you need them most.</p>
+      </div>
+    </section>
+    <button class="btn">ADD TO CART</button>
+  </div>
+</section>
+
+
+  <section class="testimonials">
+    <h3>What Our Customers Say</h3>
+    <div class="testimonial-list">
+      <div class="testimonial">
+        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="John D.">
+        <p>“Got my medicine within 30 minutes! Very reliable.”</p>
+        <span>— John D.</span>
+      </div>
+      <div class="testimonial">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah M.">
+        <p>“Super easy to order and great customer support.”</p>
+        <span>— Sarah M.</span>
+      </div>
+      <div class="testimonial">
+        <img src="premium_photo-1661779396815-56fe1ca9877c.jpeg" alt="Raj P.">
+        <p>“Love how fast and convenient it is. Saved me a trip to the pharmacy.”</p>
+        <span>— Raj P.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter-section">
+    <h2>Subscribe to our Newsletter</h2>
+    <p>Stay updated with the latest health products, offers, and news.</p>
+    <form class="newsletter-form">
+      <input type="email" placeholder="Enter your email" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <section class="app-promo">
+    <div class="app-content">
+      <h3>📱 Download our app for faster ordering</h3>
+      <p>Order medicines on the go, track deliveries, and get exclusive app-only discounts.</p>
+      <div class="app-buttons">
+        <a href="https://www.apple.com/app-store/" target="_blank">
+          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+        </a>
+        <a href="https://play.google.com/store" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chat Box -->
+<div class="chat-container" id="chatContainer">
+  <div class="chat-header" onclick="toggleChat()">Need Help? 💬</div>
+  <div class="chat-body" id="chatBody">
+    <div class="chat-messages" id="chatMessages">
+      <p><strong>Support:</strong> Hello! How can we assist you today?</p>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="chatInput" placeholder="Type your message..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+</div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        Accessibility | Forced Labour & Child Labour Report |<br> Privacy and Confidentiality | Terms of Use | <br> Pharmacies | Owner Zone
+      </div>
+      <p class="footer-copy"> <br> © 2025 InstantKart. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="Index.html" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="Index.html" aria-label="Twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="Index.html" aria-label="Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</body>
+</html>
